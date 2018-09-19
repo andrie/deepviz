@@ -1,0 +1,27 @@
+Package: deepviz
+Title: Visualize Neural Network Architectures
+Version: 0.0.0.9000
+Authors@R: person("Andrie", "de Vries", email = "apdevries@gmail.com", role = c("aut", "cre"))
+Description: Visualize neural net architectures using the "ggraph" package. 
+    Creates and plots a graph using the layer and node information.  Right now
+    only supports densely connected layers.
+Depends: R (>= 3.5.1)
+License: MIT + file LICENSE
+Suggests: 
+    rmarkdown,
+    knitr,
+    testthat,
+    covr,
+    withr,
+    assertthat
+Encoding: UTF-8
+LazyData: true
+VignetteBuilder: rmarkdown
+Imports: 
+    dplyr,
+    purrr,
+    ggraph,
+    tidygraph,
+    ggplot2
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.0

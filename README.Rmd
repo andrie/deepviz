@@ -1,0 +1,59 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# deepviz
+
+The goal of deepviz is to visualize (simple) neural network architectures.
+
+## Installation
+
+``` r
+devtools::install_github("andrie/deepviz")
+```
+
+## Example
+
+```{r}
+library(deepviz)
+library(magrittr)
+```
+
+### Logistic regression:
+
+```{r, fig.height=1.5}
+c(4, 1) %>% 
+  plot_deepviz()
+```
+
+### One hidden layer:
+
+```{r, fig.height=2.5}
+c(4, 10, 1) %>% 
+  plot_deepviz()
+```
+
+### A multi-layer perceptron (two hidden layers):
+
+```{r, fig.height=3}
+c(4, 10, 10, 1) %>% 
+  plot_deepviz()
+```
+
+
+### Multi-class classification
+
+```{r, fig.height=3}
+c(4, 10, 10, 3) %>% 
+  plot_deepviz()
+```
