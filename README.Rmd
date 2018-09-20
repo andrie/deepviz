@@ -1,5 +1,6 @@
 ---
-output: github_document
+output: html_document
+always_allow_html: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -22,12 +23,48 @@ The goal of deepviz is to visualize (simple) neural network architectures.
 devtools::install_github("andrie/deepviz")
 ```
 
-## Example
+## Load the packages
 
 ```{r}
 library(deepviz)
 library(magrittr)
 ```
+
+
+## plot_model()
+
+Create a model
+
+```{r}
+require(keras)
+
+model <- keras_model_sequential() %>%
+  layer_dense(10, input_shape = 4) %>%
+  layer_dense(2, activation = "sigmoid")
+```
+
+
+Plot the model
+```{r, fig.height = 2}
+model %>% plot_model()
+```
+
+Add some more layers and plot
+
+```{r}
+model <- keras_model_sequential() %>%
+  layer_dense(10, input_shape = 4) %>%
+  layer_dense(25, input_shape = 4) %>%
+  layer_dense(25, input_shape = 4, activation = "relu") %>%
+  layer_dropout(0.25) %>%
+  layer_dense(2, activation = "sigmoid")
+
+model %>% plot_model()
+```
+
+
+## plot_deepviz()
+
 
 ### Logistic regression:
 

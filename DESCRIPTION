@@ -12,8 +12,7 @@ Suggests:
     knitr,
     testthat,
     covr,
-    withr,
-    assertthat
+    withr
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: rmarkdown
@@ -22,6 +21,7 @@ Imports:
     purrr,
     ggraph,
     tidygraph,
-    ggplot2
+    ggplot2,
+    assertthat
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
