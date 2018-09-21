@@ -1,5 +1,7 @@
 require(keras)
 
+# Sequential model
+
 model <- keras_model_sequential() %>%
   layer_dense(10, input_shape = c(64, 64)) %>%
   layer_conv_1d(filters = 16, kernel_size = 8) %>%

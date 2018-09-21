@@ -30,13 +30,16 @@ library(magrittr)
 ```
 
 
-## plot_model()
+## plot_model() with sequential models
 
 Create a model
 
-```{r}
+```{r load-keras}
 require(keras)
+```
 
+
+```{r model-seq-1}
 model <- keras_model_sequential() %>%
   layer_dense(10, input_shape = 4) %>%
   layer_dense(2, activation = "sigmoid")
@@ -61,7 +64,7 @@ webshot::webshot(htm_file, file = tempfile(fileext = ".png"))
 
 Add some more layers and plot
 
-```{r}
+```{r model-seq-2}
 model <- keras_model_sequential() %>%
   layer_conv_2d(filters = 16, kernel_size = c(3, 3)) %>% 
   layer_max_pooling_2d() %>% 
@@ -78,6 +81,55 @@ model %>% plot_model()
 ```
 
 ```{r webshot-2, echo=FALSE, fig.height=4}
+htm_file <- tempfile(fileext = ".html")
+
+model %>% plot_model() %>% 
+  htmlwidgets::saveWidget(htm_file)
+
+webshot::webshot(htm_file, file = tempfile(fileext = ".png"))
+```
+
+
+## plot_model() with network models
+
+Construct a network model using the `keras` function API, using the example from https://keras.rstudio.com/articles/functional_api.html
+
+
+```{r network-1}
+model <- local({
+  main_input <- layer_input(shape = c(100), dtype = 'int32', name = 'main_input')
+
+  lstm_out <- main_input %>%
+    layer_embedding(input_dim = 10000, output_dim = 512, input_length = 100) %>%
+    layer_lstm(units = 32)
+
+  auxiliary_output <- lstm_out %>%
+    layer_dense(units = 1, activation = 'sigmoid', name = 'aux_output')
+
+  auxiliary_input <- layer_input(shape = c(5), name = 'aux_input')
+
+  main_output <- layer_concatenate(c(lstm_out, auxiliary_input)) %>%
+    layer_dense(units = 64, activation = 'relu') %>%
+    layer_dense(units = 64, activation = 'relu') %>%
+    layer_dense(units = 64, activation = 'relu') %>%
+    layer_dense(units = 1, activation = 'sigmoid', name = 'main_output')
+
+  keras_model(
+    inputs = c(main_input, auxiliary_input),
+    outputs = c(main_output, auxiliary_output)
+  )
+})
+
+model
+```
+
+Plot the model
+
+```{r, eval=FALSE}
+model %>% plot_model()
+```
+
+```{r network-webshot-1, echo=FALSE, fig.height=4}
 htm_file <- tempfile(fileext = ".html")
 
 model %>% plot_model() %>% 
