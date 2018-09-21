@@ -1,6 +1,5 @@
 ---
-output: html_document
-always_allow_html: yes
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -45,21 +44,46 @@ model <- keras_model_sequential() %>%
 
 
 Plot the model
-```{r, fig.height = 2}
+
+```{r eval=FALSE}
 model %>% plot_model()
 ```
+
+```{r webshot-1, echo=FALSE, fig.height=2}
+htm_file <- tempfile(fileext = ".html")
+
+model %>% plot_model() %>% 
+  htmlwidgets::saveWidget(htm_file)
+
+webshot::webshot(htm_file, file = tempfile(fileext = ".png"))
+```
+
 
 Add some more layers and plot
 
 ```{r}
 model <- keras_model_sequential() %>%
+  layer_conv_2d(filters = 16, kernel_size = c(3, 3)) %>% 
+  layer_max_pooling_2d() %>% 
   layer_dense(10, input_shape = 4) %>%
-  layer_dense(25, input_shape = 4) %>%
-  layer_dense(25, input_shape = 4, activation = "relu") %>%
-  layer_dropout(0.25) %>%
+  layer_dense(10, input_shape = 4) %>%
+  layer_dropout(0.25) %>% 
   layer_dense(2, activation = "sigmoid")
 
 model %>% plot_model()
+```
+
+```{r eval=FALSE}
+model %>% plot_model()
+```
+
+```{r webshot-2, echo=FALSE, fig.height=4}
+htm_file <- tempfile(fileext = ".html")
+
+model %>% plot_model() %>% 
+  htmlwidgets::saveWidget(htm_file)
+
+webshot::webshot(htm_file, file = tempfile(fileext = ".png"))
 ```
 
 

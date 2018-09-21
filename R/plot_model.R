@@ -6,7 +6,7 @@ model_to_dataframe <- function(x){
 
 
 is.keras <- function(x){
-  inherits(x, "keras.engine.sequential.Sequential")
+  inherits(x, "keras.engine.training.Model")
 }
 
 # Create node data frame from keras model
@@ -23,7 +23,9 @@ model_nodes <- function(x){
       type = class_name,
       label = glue::glue("{config$name}\n{class_name}\n{config$activation}"),
       shape = "rectangle",
-      activation = config$activation
+      activation = config$activation,
+      x = 1,
+      y = seq_len(nrow(df))
     )
   )
 }
@@ -48,9 +50,13 @@ model_edges <- function(x){
 #' @export
 #' @example inst/examples/example_plot_model.R
 plot_model <- function(model){
+
   nodes_df <- model_nodes(model)
   edges_df <- model_edges(nodes_df)
+
   graph <- DiagrammeR::create_graph(nodes_df, edges_df)
+  graph <- DiagrammeR::set_node_attrs(graph, "fixedsize", FALSE)
+
   DiagrammeR::render_graph(
     graph,
     layout = "tree",
