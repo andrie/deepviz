@@ -17,9 +17,9 @@ model_nodes_network <- function(x){
       type = class_name,
       label = glue::glue("{config$name}\n{class_name}\n{config$activation}"),
       shape = "rectangle",
-      activation = config$activation,
-      x = 1,
-      y = seq_len(nrow(df))
+      activation = config$activation
+      # x = 1,
+      # y = seq_len(nrow(df))
     )
   )
 }
@@ -62,6 +62,7 @@ plot_model_network <- function(model, ...){
 
   graph <- DiagrammeR::create_graph(nodes_df, edges_df)
   graph <- DiagrammeR::set_node_attrs(graph, "fixedsize", FALSE)
+  graph <- DiagrammeR::set_node_attrs(graph, "nodesep", 2)
 
   DiagrammeR::render_graph(
     graph,

@@ -1,6 +1,6 @@
-require(keras)
-
 # Sequential model
+
+require(keras)
 
 model <- keras_model_sequential() %>%
   layer_dense(10, input_shape = c(64, 64)) %>%

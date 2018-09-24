@@ -10,6 +10,7 @@
 #' @export
 #' @example inst/examples/example_network.R
 #' @example inst/examples/example_network.R
+#' @example inst/examples/example_depthwise_separable.R
 plot_model <- function(model, ...){
   UseMethod("plot_model", model)
 }
