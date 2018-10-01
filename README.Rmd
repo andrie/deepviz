@@ -1,8 +1,7 @@
 ---
+title: "Untitled"
 output: github_document
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
@@ -12,6 +11,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
 # deepviz
 
 The goal of deepviz is to visualize (simple) neural network architectures.
@@ -21,6 +21,8 @@ The goal of deepviz is to visualize (simple) neural network architectures.
 ``` r
 devtools::install_github("andrie/deepviz")
 ```
+
+
 
 ## Load the packages
 
@@ -170,3 +172,4 @@ c(4, 10, 10, 1) %>%
 c(4, 10, 10, 3) %>% 
   plot_deepviz()
 ```
+

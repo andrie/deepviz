@@ -14,17 +14,17 @@ Suggests:
     covr,
     withr,
     webshot,
-    htmlwidgets
+    htmlwidgets,
+    here
 Encoding: UTF-8
 LazyData: true
-VignetteBuilder: rmarkdown
 Imports: 
+    magrittr,
     dplyr,
     purrr,
     ggraph,
-    tidygraph,
     ggplot2,
-    assertthat,
-    DiagrammeRsvg
+    assertthat
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
+VignetteBuilder: knitr

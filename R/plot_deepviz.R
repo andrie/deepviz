@@ -5,6 +5,7 @@ make_node_name <- function(level, label){
 
 #' @importFrom purrr map_dfr
 #' @importFrom dplyr tibble mutate select left_join rename
+#' @importFrom magrittr %>%
 make_nodes_df <- function(n){
 
   map_dfr(
