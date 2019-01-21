@@ -5,7 +5,7 @@
 model_nodes <- function(x){
   assert_that(is.keras_model(x))
   if (is.keras_model_sequential(x)) {
-    model_layers <- x$get_config()
+    model_layers <- x$get_config()$layers
     l_name <- map_chr(model_layers, ~purrr::pluck(., "config", "name"))
   } else {
     model_layers <- x$get_config()$layers

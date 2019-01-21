@@ -9,8 +9,6 @@
 #'
 #' @export
 #' @example inst/examples/example_sequential_and_network.R
-#' @example inst/examples/example_depthwise_separable.R
-#' @example inst/examples/example_resnet.R
 plot_model <- function(model, ...){
   UseMethod("plot_model", model)
 }
