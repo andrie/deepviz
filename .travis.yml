@@ -1,15 +1,14 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
-sudo: false
-cache: packages
-
-dist: trusty
-sudo: false
 
 env:
   - KERAS_BACKEND="tensorflow"
-  - KERAS_IMPLEMENTATION="tensorflow"
+
+addons:
+  apt:
+    packages:
+      libudunits2-dev
 
 cache:
   packages: true
@@ -20,3 +19,4 @@ cache:
 before_script:
   - pip2.7 install --upgrade --ignore-installed --user travis virtualenv
   - pip2.7 install --upgrade --ignore-installed --user travis keras h5py pyyaml requests Pillow scipy theano tensorflow
+
