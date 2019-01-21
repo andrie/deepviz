@@ -6,6 +6,9 @@ Untitled
 The goal of deepviz is to visualize (simple) neural network
 architectures.
 
+[![Travis build
+status](https://travis-ci.org/andrie/deepviz.svg?branch=master)](https://travis-ci.org/andrie/deepviz)
+
 ## Installation
 
 ``` r
