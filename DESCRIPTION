@@ -1,6 +1,6 @@
 Package: deepviz
 Title: Visualize Neural Network Architectures
-Date: 2018-06-22
+Date: 2019-06-22
 Version: 0.0.1.9000
 Authors@R: person("Andrie", "de Vries", email = "apdevries@gmail.com", role = c("aut", "cre"))
 Description: Visualize neural net architectures using the 'ggraph' and 'DiagrammeR' packages.
