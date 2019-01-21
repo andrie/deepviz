@@ -13,11 +13,7 @@ plot_model <- function(model, ...){
   UseMethod("plot_model", model)
 }
 
-
-# @export
-# plot_model.keras.engine.sequential.Sequential <- function(model, ...){
-#     plot_model_sequential(model, ...)
-# }
+globalVariables(c(".", "V1", "V2", "x"))
 
 
 #' @export

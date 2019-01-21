@@ -22,6 +22,7 @@ Using the `deepviz` package you can plot the architecture of `keras` models.
 
   
 ```{r}
+library(keras)
 library(deepviz)
 ```
 
@@ -30,6 +31,7 @@ library(deepviz)
 ```{r, eval=FALSE, include=FALSE}
 knitr::read_chunk("../inst/examples/example_plot_deepviz.R")
 ```
+
 
 ```{r cache=FALSE, include=FALSE}
 knitr::read_chunk(

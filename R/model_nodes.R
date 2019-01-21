@@ -1,6 +1,7 @@
 # Create node data frame from keras model
 #' @importFrom DiagrammeR create_node_df create_edge_df
 #' @importFrom assertthat assert_that
+#' @importFrom glue glue
 #'
 model_nodes <- function(x){
   assert_that(is.keras_model(x))

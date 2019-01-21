@@ -26,6 +26,7 @@ Create a model
 ``` r
 require(keras)
 #> Loading required package: keras
+#> Warning: package 'keras' was built under R version 3.5.2
 ```
 
 ``` r

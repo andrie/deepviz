@@ -1,0 +1,57 @@
+---
+title: "Some famous network architectures"
+author: "Andrie de Vries"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+Examples of some famous architectures.
+
+  
+```{r}
+library(keras)
+library(deepviz)
+```
+
+
+
+
+
+
+```{r, cache=FALSE, include=FALSE}
+knitr::read_chunk(
+  here::here("inst/examples/example_network_architectures.R")
+)
+```
+
+## Depthwise separable convolution
+
+```{r depthwise-separable}
+```
+
+## Resnet
+
+```{r resnet}
+```
+
+
+### Classical inception v3
+
+```{r inception_v3}
+```
+
+
+
+

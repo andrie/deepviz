@@ -26,6 +26,10 @@ make_nodes_df <- function(n){
 }
 
 
+globalVariables(c("to", "from", "id", "node", "type", "label"))
+
+
+#' @importFrom stats embed na.omit
 make_edges_df <- function(n, nodes = make_nodes_df(n)){
 
   embedded_nodes <- n %>%
@@ -52,6 +56,7 @@ make_edges_df <- function(n, nodes = make_nodes_df(n)){
 }
 
 
+
 layout_keras <- function(graph, n_nodes){
   positions <- map_dfr(seq_along(n_nodes), function(i){
     max_nodes <- max(n_nodes)
@@ -63,6 +68,8 @@ layout_keras <- function(graph, n_nodes){
   })
     ggraph:::layout_igraph_manual(graph, positions, circular = FALSE)
 }
+
+globalVariables(c("."))
 
 
 #' Plot deepviz
