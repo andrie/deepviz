@@ -5,10 +5,8 @@ language: R
 env:
   - KERAS_BACKEND="tensorflow"
 
-addons:
-  apt:
-    packages:
-      libudunits2-dev
+apt_packages:
+  - libudunits2-dev
 
 cache:
   packages: true

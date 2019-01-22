@@ -66,7 +66,7 @@ layout_keras <- function(graph, n_nodes){
       y = length(n_nodes) - i
     )
   })
-    ggraph:::layout_igraph_manual(graph, positions, circular = FALSE)
+  ggraph::create_layout(graph, layout = "manual", node.positions = positions, circular = FALSE)
 }
 
 globalVariables(c("."))
@@ -86,7 +86,7 @@ plot_deepviz <- function(n){
   nodes <- make_nodes_df(n)
   edges <- make_edges_df(n)
 
-  tbl_graph(nodes = nodes, edges = edges) %>%
+  tidygraph::tbl_graph(nodes = nodes, edges = edges) %>%
     ggraph(layout = "manual", node.position = layout_keras(., n)) +
     geom_edge_diagonal0(edge_colour = "grey50") +
     geom_node_circle(aes(r = 0.1), fill = "orange") +

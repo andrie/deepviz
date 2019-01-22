@@ -17,6 +17,7 @@ globalVariables(c(".", "V1", "V2", "x"))
 
 
 #' @export
+#' @importFrom igraph layout_with_sugiyama
 plot_model.keras.engine.training.Model <- function(model, ...){
 
   nodes_df <- model_nodes(model)
@@ -30,8 +31,7 @@ plot_model.keras.engine.training.Model <- function(model, ...){
   graph <- DiagrammeR::set_node_attrs(graph, "nodesep", 2)
 
   coords <- local({
-    (DiagrammeR::to_igraph(graph) %>%
-       igraph::layout_with_sugiyama())[[2]] %>%
+    (igraph::layout_with_sugiyama(DiagrammeR::to_igraph(graph)))[[2]] %>%
       dplyr::as_tibble() %>%
       dplyr::rename(
         x = V1,
