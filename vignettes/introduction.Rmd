@@ -39,6 +39,12 @@ knitr::read_chunk(
 )
 ```
 
+```{r cache=FALSE, include=FALSE}
+knitr::read_chunk(
+  here::here("inst/examples/example_shared_layer.R")
+)
+```
+
 ### Sequential model
 
 Simple sequential model
@@ -51,6 +57,10 @@ Simple sequential model
 ```{r network, fig.height=6}
 ```
 
+Shared layers
+
+```{r shared, fig.height=6}
+```
 
 ## Famous architectures
 

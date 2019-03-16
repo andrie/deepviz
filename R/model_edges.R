@@ -27,10 +27,14 @@ inbound_nodes <- function(model){
   inbound <- map(
     model_layers,
     function(x){
-      if (length(x$inbound_nodes))
-        x$inbound_nodes[[1]] %>%
-        map_chr(c(1, 1))
-      else NA
+      if (length(x$inbound_nodes) == 1) {
+        x$inbound_nodes[[1]] %>% map_chr(c(1, 1))
+      } else if(length(x$inbound_nodes) > 1) {
+        # needed for shared layers
+        x$inbound_nodes %>% map_chr(c(1, 1))
+      } else {
+        NA
+      }
     }
   )
   names(inbound) <- map(model_layers, "name")
