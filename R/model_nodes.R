@@ -6,7 +6,9 @@
 model_nodes <- function(x){
   assert_that(is.keras_model(x))
   if (is.keras_model_sequential(x)) {
-    model_layers <- x$get_config()$layers
+    # Before the CRAN release of keras on 4-5-2019,
+    # this was x$get_config()$layers
+    model_layers <- x$get_config()
     l_name <- map_chr(model_layers, ~purrr::pluck(., "config", "name"))
   } else {
     model_layers <- x$get_config()$layers
@@ -28,4 +30,3 @@ model_nodes <- function(x){
     activation = l_activation
   )
 }
-
