@@ -46,15 +46,17 @@ model %>% plot_model()
 
 <img src="man/figures/README-webshot-1-1.png" width="100%" />
 
+Saving the model requires using `webshot`.  See [README.Rmd](README.Rmd) for an example.
+
 Add some more layers and plot
 
 ``` r
 model <- keras_model_sequential() %>%
-  layer_conv_2d(filters = 16, kernel_size = c(3, 3)) %>% 
-  layer_max_pooling_2d() %>% 
+  layer_conv_2d(filters = 16, kernel_size = c(3, 3)) %>%
+  layer_max_pooling_2d() %>%
   layer_dense(10, input_shape = 4) %>%
   layer_dense(10, input_shape = 4) %>%
-  layer_dropout(0.25) %>% 
+  layer_dropout(0.25) %>%
   layer_dense(2, activation = "sigmoid")
 
 model %>% plot_model()
@@ -70,7 +72,7 @@ model %>% plot_model()
 
 ## plot\_model() with network models
 
-Construct a network model using the `keras` function API, using the
+Construct a network model using the `keras` functional API, using the
 example from <https://keras.rstudio.com/articles/functional_api.html>
 
 ``` r
@@ -101,28 +103,28 @@ model <- local({
 model
 #> Model
 #> ___________________________________________________________________________
-#> Layer (type)            Output Shape     Param #  Connected to             
+#> Layer (type)            Output Shape     Param #  Connected to
 #> ===========================================================================
-#> main_input (InputLayer) (None, 100)      0                                 
+#> main_input (InputLayer) (None, 100)      0
 #> ___________________________________________________________________________
-#> embedding_1 (Embedding) (None, 100, 512) 5120000  main_input[0][0]         
+#> embedding_1 (Embedding) (None, 100, 512) 5120000  main_input[0][0]
 #> ___________________________________________________________________________
-#> lstm_1 (LSTM)           (None, 32)       69760    embedding_1[0][0]        
+#> lstm_1 (LSTM)           (None, 32)       69760    embedding_1[0][0]
 #> ___________________________________________________________________________
-#> aux_input (InputLayer)  (None, 5)        0                                 
+#> aux_input (InputLayer)  (None, 5)        0
 #> ___________________________________________________________________________
-#> concatenate_1 (Concaten (None, 37)       0        lstm_1[0][0]             
-#>                                                   aux_input[0][0]          
+#> concatenate_1 (Concaten (None, 37)       0        lstm_1[0][0]
+#>                                                   aux_input[0][0]
 #> ___________________________________________________________________________
-#> dense_6 (Dense)         (None, 64)       2432     concatenate_1[0][0]      
+#> dense_6 (Dense)         (None, 64)       2432     concatenate_1[0][0]
 #> ___________________________________________________________________________
-#> dense_7 (Dense)         (None, 64)       4160     dense_6[0][0]            
+#> dense_7 (Dense)         (None, 64)       4160     dense_6[0][0]
 #> ___________________________________________________________________________
-#> dense_8 (Dense)         (None, 64)       4160     dense_7[0][0]            
+#> dense_8 (Dense)         (None, 64)       4160     dense_7[0][0]
 #> ___________________________________________________________________________
-#> main_output (Dense)     (None, 1)        65       dense_8[0][0]            
+#> main_output (Dense)     (None, 1)        65       dense_8[0][0]
 #> ___________________________________________________________________________
-#> aux_output (Dense)      (None, 1)        33       lstm_1[0][0]             
+#> aux_output (Dense)      (None, 1)        33       lstm_1[0][0]
 #> ===========================================================================
 #> Total params: 5,200,610
 #> Trainable params: 5,200,610
@@ -143,7 +145,7 @@ model %>% plot_model()
 ### Logistic regression:
 
 ``` r
-c(4, 1) %>% 
+c(4, 1) %>%
   plot_deepviz()
 ```
 
@@ -152,7 +154,7 @@ c(4, 1) %>%
 ### One hidden layer:
 
 ``` r
-c(4, 10, 1) %>% 
+c(4, 10, 1) %>%
   plot_deepviz()
 ```
 
@@ -161,7 +163,7 @@ c(4, 10, 1) %>%
 ### A multi-layer perceptron (two hidden layers):
 
 ``` r
-c(4, 10, 10, 1) %>% 
+c(4, 10, 10, 1) %>%
   plot_deepviz()
 ```
 
@@ -170,7 +172,7 @@ c(4, 10, 10, 1) %>%
 ### Multi-class classification
 
 ``` r
-c(4, 10, 10, 3) %>% 
+c(4, 10, 10, 3) %>%
   plot_deepviz()
 ```
 
