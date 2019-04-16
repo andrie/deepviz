@@ -46,7 +46,7 @@ model %>% plot_model()
 
 <img src="man/figures/README-webshot-1-1.png" width="100%" />
 
-Saving the model requires using `webshot`.  See [Readme.Rmd](Readme.Rmd) for an example.
+Saving the model requires using `webshot`.  See [README.Rmd](README.Rmd) for an example.
 
 Add some more layers and plot
 
